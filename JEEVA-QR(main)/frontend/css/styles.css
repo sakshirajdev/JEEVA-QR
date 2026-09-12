@@ -1,0 +1,385 @@
+/*
+ * QR Emergency Alert System - Styles
+ * Red & White Emergency Theme
+ * Mobile-first, panic-friendly design
+ */
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.center {
+  text-align: center;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  text-align: center;
+  padding: 12px 8px;
+  background-color: #b80000;
+  color: #ffffff;
+}
+
+.header h1 {
+  margin: 4px 0;
+  font-size: 1.4rem;
+}
+
+.header p {
+  margin: 2px 0;
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+  border-radius: 8px;
+  border: 1px solid #f0a0a0;
+  padding: 16px;
+  margin-top: 12px;
+  background: #fff7f7;
+}
+
+.qr-mini-icon {
+  display: inline-block;
+  width: 1.05em;
+  height: 1.05em;
+  margin-left: 4px;
+  vertical-align: -0.12em;
+  background:
+    linear-gradient(#111 0 0) 0 0 / 38% 38% no-repeat,
+    linear-gradient(#111 0 0) 100% 0 / 38% 38% no-repeat,
+    linear-gradient(#111 0 0) 0 100% / 38% 38% no-repeat,
+    linear-gradient(#111 0 0) 72% 70% / 16% 16% no-repeat,
+    linear-gradient(#111 0 0) 52% 52% / 12% 12% no-repeat,
+    linear-gradient(#111 0 0) 90% 52% / 10% 10% no-repeat,
+    linear-gradient(#111 0 0) 52% 88% / 10% 10% no-repeat,
+    #fff;
+  border: 1px solid #111;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #d00000;
+  border-color: #d00000;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.primary {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #d00000;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+button.primary:active {
+  background-color: #a00000;
+}
+
+.btn-large {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+}
+
+.btn-call {
+  background-color: #008000;
+  color: #ffffff;
+}
+
+.btn-call:active {
+  background-color: #006600;
+}
+
+.btn-helpline {
+  background-color: #ffb300;
+  color: #000000;
+}
+
+.btn-helpline:active {
+  background-color: #e6a200;
+}
+
+.btn-location {
+  background-color: #0056b3;
+  color: #ffffff;
+}
+
+.btn-location:active {
+  background-color: #004494;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #d00000;
+  border: 2px solid #d00000;
+}
+
+.btn-secondary:active {
+  background-color: #fff0f0;
+}
+
+/* ============================================
+   TEXT STYLES
+   ============================================ */
+
+.info-text {
+  font-size: 0.85rem;
+  color: #444;
+  margin-top: 4px;
+}
+
+.success-text {
+  color: #006400;
+  font-weight: 600;
+}
+
+.warning-text {
+  color: #ff6600;
+  font-weight: 600;
+}
+
+.small {
+  font-size: 0.75rem;
+}
+
+.error {
+  color: #b00020;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.success {
+  color: #006400;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+/* ============================================
+   PERSON INFO DISPLAY
+   ============================================ */
+
+.name-display {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.blood-display {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #b80000;
+}
+
+.contact-display {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #006600;
+  margin-top: 4px;
+}
+
+.helpline-display {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff6600;
+  margin-top: 2px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #d00000;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+  background-color: #fff0f0;
+}
+
+/* ============================================
+   QR CODE
+   ============================================ */
+
+.qr-image {
+  display: block;
+  max-width: 260px;
+  margin: 12px auto;
+  border: 2px solid #d00000;
+  border-radius: 8px;
+}
+
+/* ============================================
+   LOCATION BOX
+   ============================================ */
+
+.location-box {
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 0.85rem;
+  word-break: break-all;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* ============================================
+   GOOD SAMARITAN NOTICE
+   ============================================ */
+
+.good-samaritan {
+  margin-top: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  background: #fff1c1;
+  font-size: 0.85rem;
+  border: 1px solid #f5c56a;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.btn-remove {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-remove:hover {
+  background-color: #c82333;
+}
+
+.contact-item,
+.helpline-item {
+  margin-bottom: 8px;
+}
+
+.privacy-option {
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.privacy-option input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  transform: scale(1.2);
+}
+
+.result-item {
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f0f8ff;
+  border-left: 4px solid #006400;
+  font-size: 0.9rem;
+}
+
+.result-item small {
+  color: #d00020;
+  font-size: 0.8rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.field-inline {
+  display: flex;
+  gap: 8px;
+}
+
+.field-inline > * {
+  flex: 1;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 360px) {
+  .header h1 {
+    font-size: 1.2rem;
+  }
+
+  .btn-large {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}

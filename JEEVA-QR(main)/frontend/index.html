@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>QR Emergency Alert - India</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/config.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>🚨 Emergency QR for Road Accidents</h1>
+      <p>India • Helmet • Bike • Car</p>
+      <p>भारत • हेलमेट • बाइक • कार</p>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2 style="margin-top: 0; font-size: 1.1rem">
+          Create Your Emergency QR <span class="qr-mini-icon" aria-hidden="true"></span><br />
+          अपना आपातकालीन QR बनाएं <span class="qr-mini-icon" aria-hidden="true"></span>
+        </h2>
+
+        <form id="registerForm">
+          <label for="fullName">
+            Full Name / पूरा नाम
+          </label>
+          <input
+            id="fullName"
+            name="fullName"
+            type="text"
+            required
+            autocomplete="name"
+            placeholder="e.g. Rajesh Kumar"
+          />
+
+          <label for="bloodGroup">
+            Blood Group / ब्लड ग्रुप
+          </label>
+          <select id="bloodGroup" name="bloodGroup" required>
+            <option value="">Select / चुनें</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+
+          <button type="submit" class="primary" id="generateBtn">
+            Next: Add Emergency Contacts<br />
+            अगला: आपातकालीन संपर्क जोड़ें
+          </button>
+        </form>
+
+        <div id="message" class="error hidden"></div>
+        <div id="success" class="success hidden"></div>
+      </section>
+
+      <section id="qrSection" class="card hidden">
+        <div class="center">
+          <div class="name-display" id="userNameDisplay"></div>
+          <div class="blood-display" id="userBloodDisplay"></div>
+        </div>
+
+        <img
+          id="qrImage"
+          class="qr-image"
+          src=""
+          alt="Emergency QR code"
+        />
+
+        <div class="center small">
+          <p>
+            Stick this QR on your helmet / bike / car.<br />
+            इस QR को अपने हेलमेट / बाइक / कार पर चिपकाएं।
+          </p>
+          <a id="downloadLink" href="#" download="emergency-qr.png">
+            <button class="btn-secondary btn-large" type="button">
+              Download the QR<br />
+              ⬇️ QR डाउनलोड / प्रिंट करें
+            </button>
+          </a>
+        </div>
+
+        <p class="info-text">
+          When any person scans this QR with Google Camera, Lens, Paytm,
+          PhonePe, or default camera, your emergency page will open directly.
+        </p>
+        <p class="info-text">
+          जब भी कोई इस QR को Google कैमरा, लेंस, Paytm, PhonePe या डिफॉल्ट
+          कैमरा से स्कैन करेगा, आपकी आपातकालीन पेज सीधे खुलेगी।
+        </p>
+      </section>
+
+      <section class="good-samaritan">
+        <strong>Good Samaritan Protection (India)</strong><br />
+        You are legally protected when you help a road accident victim in good
+        faith. Hospitals and police cannot force you to reveal personal details
+        if you do not wish to.
+        <br /><br />
+        <strong>गुड समेरिटन सुरक्षा (भारत)</strong><br />
+        सड़क दुर्घटना पीड़ित की मदद करने पर आप कानून के अनुसार सुरक्षित हैं।
+        अस्पताल और पुलिस आपकी व्यक्तिगत जानकारी जबरदस्ती नहीं ले सकते यदि आप
+        नहीं बताना चाहते।
+      </section>
+    </main>
+
+    <script src="/js/register.js"></script>
+  </body>
+</html>

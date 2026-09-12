@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Government Helplines - QR Emergency Alert</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/config.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>🚨 Government Helplines</h1>
+      <p>Add official emergency helpline numbers</p>
+      <p>आधिकारिक आपातकालीन हेल्पलाइन नंबर जोड़ें</p>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2 style="margin-top: 0; font-size: 1.1rem">
+          Add Government Helplines<br />
+          सरकारी हेल्पलाइन जोड़ें
+        </h2>
+
+        <div id="helplinesList">
+          <!-- Common helplines will be added here -->
+        </div>
+
+        <button type="button" id="addMoreBtn" class="btn-secondary">
+          ➕ Add Custom Helpline<br />
+          ➕ कस्टम हेल्पलाइन जोड़ें
+        </button>
+
+        <div style="margin-top: 20px;">
+          <button id="backBtn" class="btn-secondary">
+            ← Back / वापस
+          </button>
+          <button type="button" id="privacyBtn" class="btn-secondary">
+            🔒 Privacy Settings
+          </button>
+          <button id="generateBtn" class="primary">
+            Generate Emergency QR<br />
+            आपातकालीन QR बनाएं
+          </button>
+        </div>
+      </section>
+
+      <div id="message" class="error hidden"></div>
+      <div id="success" class="success hidden"></div>
+
+      <section id="qrSection" class="card hidden">
+        <div class="center">
+          <div class="name-display" id="userNameDisplay"></div>
+          <div class="blood-display" id="userBloodDisplay"></div>
+        </div>
+
+        <img
+          id="qrImage"
+          class="qr-image"
+          src=""
+          alt="Emergency QR code"
+        />
+
+        <div class="center small">
+          <p>
+            Stick this QR on your helmet / bike / car.<br />
+            इस QR को अपने हेलमेट / बाइक / कार पर चिपकाएं।
+          </p>
+          <a id="downloadLink" href="#" download="emergency-qr.png">
+            <button class="btn-secondary btn-large" type="button">
+              Download the QR<br />
+              ⬇️ QR डाउनलोड / प्रिंट करें
+            </button>
+          </a>
+        </div>
+
+        <p class="info-text">
+          When any person scans this QR with Google Camera, Lens, Paytm,
+          PhonePe, or default camera, your emergency page will open directly.
+        </p>
+        <p class="info-text">
+          जब भी कोई इस QR को Google कैमरा, लेंस, Paytm, PhonePe या डिफॉल्ट
+          कैमरा से स्कैन करेगा, आपकी आपातकालीन पेज सीधे खुलेगी।
+        </p>
+      </section>
+    </main>
+
+    <script src="/js/government-helplines.js"></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Emergency Contacts - QR Emergency Alert</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/config.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>🚨 Emergency Contacts</h1>
+      <p>Add your family and friends contacts</p>
+      <p>अपने परिवार और दोस्तों के संपर्क जोड़ें</p>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2 style="margin-top: 0; font-size: 1.1rem">
+          Add Emergency Contacts<br />
+          आपातकालीन संपर्क जोड़ें
+        </h2>
+
+        <div id="contactsList">
+          <!-- Initial contact fields -->
+          <div class="contact-item">
+            <label>
+              Contact Name / संपर्क नाम
+            </label>
+            <input
+              type="text"
+              class="contact-name"
+              autocomplete="name"
+              placeholder="e.g. Sunita Kumar"
+              required
+            />
+
+            <label>
+              Contact Number / संपर्क नंबर
+            </label>
+            <input
+              type="tel"
+              class="contact-phone"
+              inputmode="tel"
+              pattern="[0-9+\-\s]{10,15}"
+              placeholder="e.g. 9876543210"
+              required
+            />
+            <div class="info-text">
+              Prefer Indian mobile number with STD / ISD code if needed.
+            </div>
+          </div>
+        </div>
+
+        <button type="button" id="addMoreBtn" class="btn-secondary">
+          ➕ Add More Contacts<br />
+          ➕ और संपर्क जोड़ें
+        </button>
+
+        <div style="margin-top: 20px;">
+          <button type="button" id="backBtn" class="btn-secondary">
+            ← Back / वापस
+          </button>
+          <button type="button" id="nextBtn" class="primary">
+            Next: Add Government Helplines<br />
+            अगला: सरकारी हेल्पलाइन जोड़ें
+          </button>
+        </div>
+      </section>
+
+      <div id="message" class="error hidden"></div>
+    </main>
+
+    <script src="/js/emergency-contacts.js"></script>
+  </body>
+</html>

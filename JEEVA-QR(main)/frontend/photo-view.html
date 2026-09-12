@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Emergency Photo - QR Emergency Alert</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style>
+      .photo-container {
+        text-align: center;
+        padding: 20px;
+      }
+      .emergency-photo {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 3px solid #d00000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      }
+      .warning-banner {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+      .photo-info {
+        background-color: #f8f9fa;
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 16px;
+        font-size: 0.9rem;
+      }
+      .countdown {
+        color: #d00000;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>📸 Emergency Photo</h1>
+      <p>Accident scene documentation</p>
+      <p>दुर्घटना स्थल दस्तावेज</p>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <div class="warning-banner">
+          ⚠️ ONE-TIME ACCESS - This photo will self-destruct after viewing<br>
+          ⚠️ एक बार पहुंच - यह फोटो देखने के बाद स्वयं नष्ट हो जाएगी
+        </div>
+
+        <div class="photo-container">
+          <img id="emergencyPhoto" class="emergency-photo" alt="Emergency photo" />
+        </div>
+
+        <div class="photo-info">
+          <div id="photoDetails">
+            <strong>📸 Emergency Photo Details</strong><br>
+            <span id="photoTime"></span><br>
+            <span id="photoLocation"></span>
+          </div>
+          
+          <div class="countdown" id="countdown">
+            This link will expire in: <span id="timeRemaining">24:00:00</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="good-samaritan">
+        <strong>Important Notice:</strong><br>
+        This photo was taken during an emergency situation and is intended only for emergency response coordination. The photo link will expire after first viewing to protect privacy.<br><br>
+        <strong>महत्वपूर्ण सूचना:</strong><br>
+        यह फोटो आपातकालीन स्थिति में ली गई थी और केवल आपातकालीन प्रतिक्रिया समन्वय के लिए है। गोपनीयता की सुरक्षा के लिए फोटो लिंक पहली बार देखने के बाद समाप्त हो जाएगी।
+      </section>
+    </main>
+
+    <script>
+      // Get view token from URL
+      const viewToken = window.location.pathname.split('/').pop();
+      
+      // Load photo information
+      async function loadPhoto() {
+        try {
+          const response = await fetch(`/api/photos/${viewToken}`);
+          if (!response.ok) {
+            throw new Error('Photo not found');
+          }
+          
+          const photoInfo = await response.json();
+          
+          // Set photo source
+          document.getElementById('emergencyPhoto').src = photoInfo.photoUrl;
+          
+          // Set photo details
+          document.getElementById('photoTime').textContent = 
+            `Captured: ${new Date(photoInfo.timestamp).toLocaleString()}`;
+          
+          document.getElementById('photoLocation').textContent = 
+            `Patient: ${photoInfo.patientName}`;
+          
+          // Start countdown
+          startCountdown(photoInfo.uploadedAt);
+          
+        } catch (error) {
+          console.error('Error loading photo:', error);
+          document.querySelector('.photo-container').innerHTML = 
+            '<div class="error">Photo not found or expired<br>फोटो नहीं मिली या समाप्त हो गई</div>';
+        }
+      }
+      
+      // Countdown timer
+      function startCountdown(uploadedAt) {
+        const uploadedTime = new Date(uploadedAt);
+        const expiryTime = new Date(uploadedTime.getTime() + 24 * 60 * 60 * 1000); // 24 hours
+        
+        function updateCountdown() {
+          const now = new Date();
+          const timeRemaining = expiryTime - now;
+          
+          if (timeRemaining <= 0) {
+            document.getElementById('timeRemaining').textContent = 'EXPIRED';
+            document.getElementById('emergencyPhoto').style.display = 'none';
+            document.querySelector('.photo-container').innerHTML = 
+              '<div class="error">Photo link expired<br>फोटो लिंक समाप्त हो गई</div>';
+            return;
+          }
+          
+          const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+          const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+          
+          document.getElementById('timeRemaining').textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+          
+          setTimeout(updateCountdown, 1000);
+        }
+        
+        updateCountdown();
+      }
+      
+      // Load photo on page load
+      loadPhoto();
+    </script>
+  </body>
+</html>
